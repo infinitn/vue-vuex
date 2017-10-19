@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import {mapGetters,mapActions} from 'vuex'
+import {mapGetters} from 'vuex'
 export default {
   name: 'HelloWorld',
   data () {
@@ -19,18 +19,18 @@ export default {
   },
   methods:{
     addLog(){
-      this.$store.commit('GET_USERNAME',this.msg);
+      this.$store.commit('GET_USERNAME',this.msg);//状态提交到mutations
       console.log(this.$store.state.username);
     },
     setUsername(){
-      this.$store.dispatch('saveName',this.msg);
+      this.$store.dispatch('saveName',this.msg);//状态提交到actions
       console.log(this.$store.state.username);
     }
   },
   computed:{
-    ...mapGetters(['getData']),
+    ...mapGetters(['getData']),//通过getters暴露拿到数据
     showData(){
-      return this.$store.state.username;
+      return this.$store.state.username;//在state中直接拿到数据
     }
   },
   mounted(){
